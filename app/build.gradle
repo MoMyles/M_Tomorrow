@@ -1,0 +1,81 @@
+apply plugin: 'com.android.application'
+
+def config = rootProject.ext.android
+def librarys = rootProject.ext.dependencies
+
+android {
+    compileSdkVersion config.compileSdkVersion
+    buildToolsVersion config.buildToolsVersion
+    packagingOptions {
+        exclude 'project.properties'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/DEPENDENCIES'
+    }
+
+    lintOptions {
+        disable 'MissingTranslation'
+        abortOnError false
+        ignoreWarnings true
+    }
+    signingConfigs {
+        debug {
+            keyAlias 'momyles.cc'
+            keyPassword 'android'
+            storeFile file('./../sign/momyles_debug.jks')
+            storePassword 'android'
+        }
+        release {
+            keyAlias 'release.momyles.cc'
+            keyPassword 'love1992'
+            storeFile file('./../sign/momyles_release.jks')
+            storePassword 'love1992'
+        }
+    }
+
+    defaultConfig {
+        applicationId "cc.momyles.tomorrow"
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation librarys.supportV7
+    implementation librarys.supportV4
+    implementation librarys.design
+    implementation librarys.recyclerview
+    implementation librarys.qmui
+    implementation librarys.baseRecyclerViewAdapterHelper
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
