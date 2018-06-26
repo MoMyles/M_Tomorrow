@@ -13,6 +13,9 @@ ext {
             recyclerview : "com.android.support:recyclerview-v7:27.1.1",
             qmui : "com.qmuiteam:qmui:1.1.3",
             baseRecyclerViewAdapterHelper: "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40",
-            easyRefreshLayout: "com.github.anzaizai:EasyRefreshLayout:1.3.1"
+            easyRefreshLayout: "com.github.anzaizai:EasyRefreshLayout:1.3.1",
+            avLoading: "com.wang.avi:library:2.1.3",
+            utilCode: "com.blankj:utilcode:1.17.1",
+            picasso: "com.squareup.picasso:picasso:2.71828"
     ]
 }

@@ -2,6 +2,8 @@ package cc.momyles.tomorrow.app;
 
 import android.app.Application;
 
+import com.blankj.utilcode.util.Utils;
+
 public class MyApp extends Application {
     public static final String SP_NAME = "MyApp";
 
@@ -11,6 +13,7 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        Utils.init(this);
     }
 
     @Override
