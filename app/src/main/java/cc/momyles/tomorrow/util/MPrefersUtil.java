@@ -9,7 +9,7 @@ import java.util.Map;
 
 import cc.momyles.tomorrow.app.MyApp;
 
-public class PrefersUtil {
+public class MPrefersUtil {
     
     public static final String FILE_NAME = MyApp.SP_NAME; 
     /**
