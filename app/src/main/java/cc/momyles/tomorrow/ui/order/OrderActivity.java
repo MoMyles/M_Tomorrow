@@ -2,13 +2,16 @@ package cc.momyles.tomorrow.ui.order;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.ajguan.library.EasyRefreshLayout;
-import com.ajguan.library.LoadModel;
 import com.qmuiteam.qmui.widget.QMUITopBar;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +26,7 @@ public class OrderActivity extends BaseActivity {
     private final String TITLE = "订单-列表";
 
     private QMUITopBar topBar = null;
-    private EasyRefreshLayout easy = null;
+    private SmartRefreshLayout refresh = null;
     private RecyclerView rvList = null;
 
     private LinearLayoutManager linearLayoutManager = null;
@@ -49,40 +52,6 @@ public class OrderActivity extends BaseActivity {
     }
 
     private void buildRvList() {
-        if (easy == null) {
-            easy = findViewById(R.id.easy);
-        }
-        easy.setLoadMoreModel(LoadModel.NONE);
-        easy.addEasyEvent(new EasyRefreshLayout.EasyEvent() {
-            @Override
-            public void onLoadMore() {
-
-            }
-
-            @Override
-            public void onRefreshing() {
-                mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        data.clear();
-                        for (int i=0;i<100;i++){
-                            Order order = new Order();
-                            order.setNo(i+"");
-                            order.setName(i+"");
-                            order.setFrom("I");
-                            data.add(order);
-                        }
-                        mHandler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                adapter.setNewData(data);
-                                easy.refreshComplete();
-                            }
-                        }, 500);
-                    }
-                }, 2000);
-            }
-        });
         if (rvList == null) {
             rvList = findViewById(R.id.rvList);
         }
@@ -98,6 +67,49 @@ public class OrderActivity extends BaseActivity {
             adapter = new OrderAdapter(R.layout.item_order, data);
         }
         rvList.setAdapter(adapter);
+
+        if (refresh == null) {
+            refresh = findViewById(R.id.refresh);
+        }
+        refresh.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        data.clear();
+                        for (int i = 0; i < 100; i++) {
+                            Order order = new Order();
+                            order.setNo(i + "");
+                            order.setName(i + "");
+                            order.setFrom("I");
+                            data.add(order);
+                        }
+                        mHandler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                adapter.setNewData(data);
+                                refresh.finishRefresh();
+                            }
+                        }, 500);
+                    }
+                }, 2000);
+            }
+        });
+        refresh.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull final RefreshLayout refreshLayout) {
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        refreshLayout.finishLoadMore();
+                    }
+                }, 2000);
+            }
+        });
+
+        refresh.setEnableLoadMore(true);//可加载更多
+        refresh.autoRefresh();
     }
 
     @Override
@@ -109,7 +121,7 @@ public class OrderActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         topBar = null;
-        easy = null;
+        refresh = null;
         rvList = null;
         linearLayoutManager = null;
         adapter = null;

@@ -39,6 +39,9 @@ public class StartActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 if (!MClickUtil.isFastClick(R.id.jump)) {
+                    if (timer != null) {
+                        timer.cancel();
+                    }
                     toMain();
                 }
             }

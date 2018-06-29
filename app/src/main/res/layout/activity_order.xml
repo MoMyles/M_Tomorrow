@@ -15,8 +15,8 @@
         app:qmui_topbar_title_color="@android:color/white"
         app:qmui_topbar_title_text_size="16sp" />
 
-    <com.ajguan.library.EasyRefreshLayout
-        android:id="@+id/easy"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white">
@@ -25,5 +25,5 @@
             android:id="@+id/rvList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
-    </com.ajguan.library.EasyRefreshLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

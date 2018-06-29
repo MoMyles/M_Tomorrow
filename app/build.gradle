@@ -74,7 +74,7 @@ dependencies {
     implementation librarys.recyclerview
     implementation librarys.qmui
     implementation librarys.baseRecyclerViewAdapterHelper
-    implementation librarys.easyRefreshLayout
+    implementation librarys.smart
     implementation librarys.avLoading
     implementation librarys.utilCode
     implementation librarys.picasso
