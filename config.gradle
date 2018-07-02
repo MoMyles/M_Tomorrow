@@ -18,6 +18,7 @@ ext {
             picasso                      : "com.squareup.picasso:picasso:2.71828",
             banner                       : "com.youth.banner:banner:1.4.10",
             smart                        : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-7",
-            smart_header                 : "com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-7"
+            smart_header                 : "com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-7",
+            photoview                    : "com.github.chrisbanes:PhotoView:2.1.3"
     ]
 }
