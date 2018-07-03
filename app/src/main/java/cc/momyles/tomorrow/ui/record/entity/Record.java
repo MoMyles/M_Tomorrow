@@ -1,8 +1,8 @@
-package cc.momyles.tomorrow.ui.order.entity;
+package cc.momyles.tomorrow.ui.record.entity;
 
 import java.io.Serializable;
 
-public class Order implements Serializable {
+public class Record implements Serializable {
     private String no;
     private String name;
     private String from;

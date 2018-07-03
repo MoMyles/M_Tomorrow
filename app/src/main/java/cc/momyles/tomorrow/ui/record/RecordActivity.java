@@ -1,4 +1,4 @@
-package cc.momyles.tomorrow.ui.order;
+package cc.momyles.tomorrow.ui.record;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,20 +18,20 @@ import java.util.List;
 
 import cc.momyles.tomorrow.R;
 import cc.momyles.tomorrow.ui.base.BaseActivity;
-import cc.momyles.tomorrow.ui.order.adapter.OrderAdapter;
-import cc.momyles.tomorrow.ui.order.entity.Order;
+import cc.momyles.tomorrow.ui.record.adapter.RecordAdapter;
+import cc.momyles.tomorrow.ui.record.entity.Record;
 
-public class OrderActivity extends BaseActivity {
+public class RecordActivity extends BaseActivity {
 
-    private final String TITLE = "订单-列表";
+    private final String TITLE = "记录-列表";
 
     private QMUITopBar topBar = null;
     private SmartRefreshLayout refresh = null;
     private RecyclerView rvList = null;
 
     private LinearLayoutManager linearLayoutManager = null;
-    private OrderAdapter adapter = null;
-    private List<Order> data = null;
+    private RecordAdapter adapter = null;
+    private List<Record> data = null;
 
     private Handler mHandler = null;
 
@@ -64,7 +64,7 @@ public class OrderActivity extends BaseActivity {
             data = new ArrayList<>();
         }
         if (adapter == null) {
-            adapter = new OrderAdapter(R.layout.item_order, data);
+            adapter = new RecordAdapter(R.layout.item_order, data);
         }
         rvList.setAdapter(adapter);
 
@@ -79,11 +79,11 @@ public class OrderActivity extends BaseActivity {
                     public void run() {
                         data.clear();
                         for (int i = 0; i < 100; i++) {
-                            Order order = new Order();
-                            order.setNo(i + "");
-                            order.setName(i + "");
-                            order.setFrom("I");
-                            data.add(order);
+                            Record record = new Record();
+                            record.setNo(i + "");
+                            record.setName(i + "");
+                            record.setFrom("I");
+                            data.add(record);
                         }
                         mHandler.postDelayed(new Runnable() {
                             @Override

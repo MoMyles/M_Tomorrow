@@ -47,7 +47,7 @@ public class StartActivity extends BaseActivity {
             }
         });
         Picasso.get().load("http://f.hiphotos.baidu.com/image/pic/item/8718367adab44aed5b24056fbf1c8701a08bfbd7.jpg")
-                .placeholder(R.mipmap.img_default).fit().into(image);
+                .placeholder(R.mipmap.start_default_bg).fit().into(image);
 
         handler = new Handler() {
             @Override
@@ -90,6 +90,7 @@ public class StartActivity extends BaseActivity {
     private void toMain() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override

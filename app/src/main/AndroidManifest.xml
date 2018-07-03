@@ -23,6 +23,6 @@
         </activity>
 
         <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.order.OrderActivity" />
+        <activity android:name=".ui.record.RecordActivity" />
     </application>
 </manifest>
