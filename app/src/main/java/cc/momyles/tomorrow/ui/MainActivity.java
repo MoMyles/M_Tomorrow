@@ -1,8 +1,10 @@
 package cc.momyles.tomorrow.ui;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Button;
 
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.youth.banner.Banner;
@@ -33,6 +35,8 @@ public class MainActivity extends BaseActivity {
     protected void onBindView(Bundle savedInstanceState) {
         topBar = findViewById(R.id.topBar);
         topBar.setTitle(TITLE);
+        Button btnRight = topBar.addRightTextButton("我的", R.id.main_btn_right);
+        btnRight.setTextColor(Color.WHITE);
 
         banner = findViewById(R.id.banner);
         banner.setImageLoader(new ImgLoader());
@@ -50,7 +54,7 @@ public class MainActivity extends BaseActivity {
         menuList = new ArrayList<>();
         menuList.add(new Menu("检查", "http://imgsrc.baidu.com/imgad/pic/item/35a85edf8db1cb1304324e2ed654564e92584bb7.jpg", null));
         menuList.add(new Menu("查询", "http://imgsrc.baidu.com/imgad/pic/item/a2cc7cd98d1001e91ac36c32b30e7bec54e7970b.jpg", null));
-        menuList.add(new Menu("我的", "http://imgsrc.baidu.com/imgad/pic/item/d788d43f8794a4c205439c1605f41bd5ad6e39ae.jpg", null));
+        menuList.add(new Menu("待办", "http://imgsrc.baidu.com/imgad/pic/item/a2cc7cd98d1001e91ac36c32b30e7bec54e7970b.jpg", null));
         adapter = new MenuAdapter(R.layout.item_main_menu, menuList);
         rv.setAdapter(adapter);
     }
