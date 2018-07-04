@@ -2,7 +2,10 @@ package cc.momyles.tomorrow.ui.adapter;
 
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.blankj.utilcode.util.ScreenUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -12,6 +15,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import cc.momyles.tomorrow.R;
+import cc.momyles.tomorrow.app.MyApp;
 import cc.momyles.tomorrow.ui.entity.Menu;
 
 
@@ -24,9 +28,16 @@ public class MenuAdapter extends BaseQuickAdapter<Menu, BaseViewHolder> {
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, Menu item) {
+    protected void convert(final BaseViewHolder helper, final Menu item) {
         ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(screenWidth / 3, ViewGroup.LayoutParams.WRAP_CONTENT);
         helper.itemView.setLayoutParams(lp);
+        helper.itemView.setOnTouchListener(MyApp.getContext().focus());
+        helper.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MyApp.getContext(), "点击了" + helper.getAdapterPosition(), Toast.LENGTH_SHORT).show();
+            }
+        });
         if (item != null) {
             helper.setText(R.id.tv1, item.getName() == null ? "" : item.getName());
             if (item.getResId() > 0) {
