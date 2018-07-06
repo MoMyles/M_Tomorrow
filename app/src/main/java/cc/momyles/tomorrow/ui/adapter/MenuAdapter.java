@@ -35,7 +35,9 @@ public class MenuAdapter extends BaseQuickAdapter<Menu, BaseViewHolder> {
         helper.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MyApp.getContext(), "点击了" + helper.getAdapterPosition(), Toast.LENGTH_SHORT).show();
+                if (item.getIntent()!=null){
+                    MyApp.getContext().startActivity(item.getIntent());
+                }
             }
         });
         if (item != null) {

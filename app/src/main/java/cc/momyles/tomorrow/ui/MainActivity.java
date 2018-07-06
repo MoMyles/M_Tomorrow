@@ -1,5 +1,6 @@
 package cc.momyles.tomorrow.ui;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -17,6 +18,7 @@ import cc.momyles.tomorrow.loader.ImgLoader;
 import cc.momyles.tomorrow.ui.adapter.MenuAdapter;
 import cc.momyles.tomorrow.ui.base.BaseActivity;
 import cc.momyles.tomorrow.ui.entity.Menu;
+import cc.momyles.tomorrow.ui.record.RecordActivity;
 
 
 public class MainActivity extends BaseActivity {
@@ -53,7 +55,7 @@ public class MainActivity extends BaseActivity {
         rv.setLayoutManager(gridLayoutManager);
         menuList = new ArrayList<>();
         menuList.add(new Menu("检查", "http://imgsrc.baidu.com/imgad/pic/item/35a85edf8db1cb1304324e2ed654564e92584bb7.jpg", null));
-        menuList.add(new Menu("查询", "http://imgsrc.baidu.com/imgad/pic/item/a2cc7cd98d1001e91ac36c32b30e7bec54e7970b.jpg", null));
+        menuList.add(new Menu("查询", "http://imgsrc.baidu.com/imgad/pic/item/a2cc7cd98d1001e91ac36c32b30e7bec54e7970b.jpg", new Intent(this, RecordActivity.class)));
         menuList.add(new Menu("待办", "http://imgsrc.baidu.com/imgad/pic/item/a2cc7cd98d1001e91ac36c32b30e7bec54e7970b.jpg", null));
         adapter = new MenuAdapter(R.layout.item_main_menu, menuList);
         rv.setAdapter(adapter);

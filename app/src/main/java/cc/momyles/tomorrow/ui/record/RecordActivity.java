@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -21,13 +23,13 @@ import cc.momyles.tomorrow.ui.base.BaseActivity;
 import cc.momyles.tomorrow.ui.record.adapter.RecordAdapter;
 import cc.momyles.tomorrow.ui.record.entity.Record;
 
-public class RecordActivity extends BaseActivity {
+public class RecordActivity extends BaseActivity implements View.OnClickListener {
 
     private final String TITLE = "记录-列表";
 
     private QMUITopBar topBar = null;
     private SmartRefreshLayout refresh = null;
-    private RecyclerView rvList = null;
+    private RecyclerView rv = null;
 
     private LinearLayoutManager linearLayoutManager = null;
     private RecordAdapter adapter = null;
@@ -44,29 +46,40 @@ public class RecordActivity extends BaseActivity {
         buildRvList();
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.record_right:// 搜索条件选择
+                break;
+        }
+    }
+
     private void buildTopBar() {
         if (topBar == null) {
             topBar = findViewById(R.id.topBar);
         }
         topBar.setTitle(TITLE);
+
+        ImageButton ib = topBar.addRightImageButton(R.mipmap.search, R.id.record_right);
+        ib.setOnClickListener(this);
     }
 
     private void buildRvList() {
-        if (rvList == null) {
-            rvList = findViewById(R.id.rvList);
+        if (rv == null) {
+            rv = findViewById(R.id.rv);
         }
-        rvList.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        rv.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         if (linearLayoutManager == null) {
             linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         }
-        rvList.setLayoutManager(linearLayoutManager);
+        rv.setLayoutManager(linearLayoutManager);
         if (data == null) {
             data = new ArrayList<>();
         }
         if (adapter == null) {
-            adapter = new RecordAdapter(R.layout.item_order, data);
+            adapter = new RecordAdapter(R.layout.item_record, data);
         }
-        rvList.setAdapter(adapter);
+        rv.setAdapter(adapter);
 
         if (refresh == null) {
             refresh = findViewById(R.id.refresh);
@@ -114,7 +127,7 @@ public class RecordActivity extends BaseActivity {
 
     @Override
     protected Object getLayout() {
-        return R.layout.activity_order;
+        return R.layout.activity_record;
     }
 
     @Override
@@ -122,7 +135,7 @@ public class RecordActivity extends BaseActivity {
         super.onDestroy();
         topBar = null;
         refresh = null;
-        rvList = null;
+        rv = null;
         linearLayoutManager = null;
         adapter = null;
         data = null;
