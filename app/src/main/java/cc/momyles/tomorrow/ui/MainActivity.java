@@ -15,9 +15,7 @@ import java.util.List;
 
 import cc.momyles.tomorrow.R;
 import cc.momyles.tomorrow.loader.ImgLoader;
-import cc.momyles.tomorrow.ui.adapter.MenuAdapter;
 import cc.momyles.tomorrow.ui.base.BaseActivity;
-import cc.momyles.tomorrow.ui.entity.Menu;
 import cc.momyles.tomorrow.ui.record.RecordActivity;
 
 

@@ -17,6 +17,9 @@ public class MClickUtil {
             }
             lastClickTime = currentClickTime;
             return flag;
+        } else {
+            MClickUtil.resId = resId;
+            MClickUtil.lastClickTime = System.currentTimeMillis();
         }
         return false;
     }

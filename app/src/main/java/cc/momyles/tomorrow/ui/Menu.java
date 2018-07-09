@@ -1,4 +1,4 @@
-package cc.momyles.tomorrow.ui.entity;
+package cc.momyles.tomorrow.ui;
 
 import android.content.Intent;
 

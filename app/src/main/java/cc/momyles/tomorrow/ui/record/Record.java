@@ -1,4 +1,4 @@
-package cc.momyles.tomorrow.ui.record.entity;
+package cc.momyles.tomorrow.ui.record;
 
 import java.io.Serializable;
 

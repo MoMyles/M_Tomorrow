@@ -1,4 +1,4 @@
-package cc.momyles.tomorrow.ui.record.adapter;
+package cc.momyles.tomorrow.ui.record;
 
 import android.support.annotation.Nullable;
 
@@ -8,7 +8,6 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import java.util.List;
 
 import cc.momyles.tomorrow.R;
-import cc.momyles.tomorrow.ui.record.entity.Record;
 
 public class RecordAdapter extends BaseQuickAdapter<Record, BaseViewHolder> {
 

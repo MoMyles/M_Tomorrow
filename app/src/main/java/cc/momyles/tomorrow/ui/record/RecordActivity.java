@@ -20,8 +20,6 @@ import java.util.List;
 
 import cc.momyles.tomorrow.R;
 import cc.momyles.tomorrow.ui.base.BaseActivity;
-import cc.momyles.tomorrow.ui.record.adapter.RecordAdapter;
-import cc.momyles.tomorrow.ui.record.entity.Record;
 
 public class RecordActivity extends BaseActivity implements View.OnClickListener {
 

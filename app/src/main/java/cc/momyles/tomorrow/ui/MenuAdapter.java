@@ -1,11 +1,9 @@
-package cc.momyles.tomorrow.ui.adapter;
+package cc.momyles.tomorrow.ui;
 
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.blankj.utilcode.util.ScreenUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -16,7 +14,6 @@ import java.util.List;
 
 import cc.momyles.tomorrow.R;
 import cc.momyles.tomorrow.app.MyApp;
-import cc.momyles.tomorrow.ui.entity.Menu;
 
 
 public class MenuAdapter extends BaseQuickAdapter<Menu, BaseViewHolder> {
