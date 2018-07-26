@@ -23,6 +23,9 @@ ext {
             okgo                         : 'com.lzy.net:okgo:3.0.4',
             zbar                         : 'me.dm7.barcodescanner:zbar:1.9.8',
             zxing                        : 'me.dm7.barcodescanner:zxing:1.9.8',
-            easypop                      : 'com.github.zyyoona7:EasyPopup:1.1.1'
+            easypop                      : 'com.github.zyyoona7:EasyPopup:1.1.1',
+            greendao                     : 'org.greenrobot:greendao:3.2.2',
+            album                        : 'com.yanzhenjie:album:2.1.2',
+            fastjson                     : 'com.alibaba:fastjson:1.1.68.android'
     ]
 }
