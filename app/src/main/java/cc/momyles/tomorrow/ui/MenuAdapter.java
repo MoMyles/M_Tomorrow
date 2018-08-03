@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.blankj.utilcode.util.ScreenUtils;
+import com.blankj.utilcode.util.Utils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.squareup.picasso.Picasso;
@@ -13,7 +14,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import cc.momyles.tomorrow.R;
-import cc.momyles.tomorrow.app.MyApp;
 
 
 public class MenuAdapter extends BaseQuickAdapter<Menu, BaseViewHolder> {
@@ -28,12 +28,11 @@ public class MenuAdapter extends BaseQuickAdapter<Menu, BaseViewHolder> {
     protected void convert(final BaseViewHolder helper, final Menu item) {
         ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(screenWidth / 3, ViewGroup.LayoutParams.WRAP_CONTENT);
         helper.itemView.setLayoutParams(lp);
-        helper.itemView.setOnTouchListener(MyApp.getContext().focus());
         helper.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (item.getIntent()!=null){
-                    MyApp.getContext().startActivity(item.getIntent());
+                    Utils.getApp().getApplicationContext().startActivity(item.getIntent());
                 }
             }
         });

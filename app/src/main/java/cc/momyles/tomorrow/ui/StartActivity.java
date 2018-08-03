@@ -9,6 +9,7 @@ import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
+import com.cetcme.m.helper.MClickHelper;
 import com.squareup.picasso.Picasso;
 
 import java.util.Timer;
@@ -16,7 +17,6 @@ import java.util.TimerTask;
 
 import cc.momyles.tomorrow.R;
 import cc.momyles.tomorrow.ui.base.BaseActivity;
-import cc.momyles.tomorrow.util.MClickUtil;
 
 public class StartActivity extends BaseActivity {
 
@@ -38,7 +38,7 @@ public class StartActivity extends BaseActivity {
         jump.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!MClickUtil.isFastClick(R.id.jump)) {
+                if (!MClickHelper.isFastClick(R.id.jump)) {
                     if (timer != null) {
                         timer.cancel();
                     }
@@ -100,9 +100,9 @@ public class StartActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+        cancelTimer();
         handler = null;
-        timer = null;
+        super.onDestroy();
     }
 
     private void cancelTimer() {

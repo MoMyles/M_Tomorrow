@@ -11,7 +11,9 @@ import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cc.momyles.tomorrow.R;
 import cc.momyles.tomorrow.loader.ImgLoader;
@@ -57,6 +59,10 @@ public class MainActivity extends BaseActivity {
         menuList.add(new Menu("待办", "http://imgsrc.baidu.com/imgad/pic/item/a2cc7cd98d1001e91ac36c32b30e7bec54e7970b.jpg", null));
         adapter = new MenuAdapter(R.layout.item_main_menu, menuList);
         rv.setAdapter(adapter);
+
+        Map<String, String> param = new HashMap<>();
+        param.put("userName", "sbaz");
+        param.put("password", "123456");
     }
 
     @Override
@@ -66,7 +72,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         topBar = null;
         banner = null;
         rv = null;
@@ -74,5 +79,6 @@ public class MainActivity extends BaseActivity {
         imageList = null;
         menuList = null;
         adapter = null;
+        super.onDestroy();
     }
 }

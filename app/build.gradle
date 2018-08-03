@@ -68,19 +68,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation librarys.supportV7
-    implementation librarys.supportV4
-    implementation librarys.design
-    implementation librarys.recyclerview
-    implementation librarys.qmui
-    implementation librarys.baseRecyclerViewAdapterHelper
-    implementation librarys.smart
-    implementation librarys.avLoading
-    implementation librarys.utilCode
-    implementation librarys.picasso
-    implementation librarys.banner
-    implementation librarys.photoview
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    compile project(':m')
 }

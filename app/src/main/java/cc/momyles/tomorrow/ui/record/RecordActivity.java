@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.qmuiteam.qmui.widget.QMUIEmptyView;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -28,6 +29,7 @@ public class RecordActivity extends BaseActivity implements View.OnClickListener
     private QMUITopBar topBar = null;
     private SmartRefreshLayout refresh = null;
     private RecyclerView rv = null;
+    private QMUIEmptyView emptyView = null;
 
     private LinearLayoutManager linearLayoutManager = null;
     private RecordAdapter adapter = null;
@@ -42,6 +44,8 @@ public class RecordActivity extends BaseActivity implements View.OnClickListener
         }
         buildTopBar();
         buildRvList();
+        emptyView = findViewById(R.id.emptyView);
+        emptyView.show(true);
     }
 
     @Override
@@ -88,21 +92,24 @@ public class RecordActivity extends BaseActivity implements View.OnClickListener
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        data.clear();
-                        for (int i = 0; i < 100; i++) {
-                            Record record = new Record();
-                            record.setNo(i + "");
-                            record.setName(i + "");
-                            record.setFrom("I");
-                            data.add(record);
-                        }
-                        mHandler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                adapter.setNewData(data);
-                                refresh.finishRefresh();
+                        if (data != null) {
+                            data.clear();
+                            for (int i = 0; i < 100; i++) {
+                                Record record = new Record();
+                                record.setNo(i + "");
+                                record.setName(i + "");
+                                record.setFrom("I");
+                                data.add(record);
                             }
-                        }, 500);
+                            mHandler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    adapter.setNewData(data);
+                                    refresh.finishRefresh();
+                                    emptyView.hide();
+                                }
+                            }, 500);
+                        }
                     }
                 }, 2000);
             }
@@ -125,12 +132,11 @@ public class RecordActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected Object getLayout() {
-        return R.layout.activity_record;
+        return R.layout.layout_list;
     }
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         topBar = null;
         refresh = null;
         rv = null;
@@ -138,5 +144,6 @@ public class RecordActivity extends BaseActivity implements View.OnClickListener
         adapter = null;
         data = null;
         mHandler = null;
+        super.onDestroy();
     }
 }
