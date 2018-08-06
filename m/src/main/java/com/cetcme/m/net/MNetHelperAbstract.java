@@ -1,5 +1,7 @@
 package com.cetcme.m.net;
 
+import android.support.annotation.NonNull;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -27,7 +29,7 @@ public abstract class MNetHelperAbstract {
 
     protected abstract OkHttpClient getOkHttpClient();
 
-    protected abstract String getBaseUrl();
+    protected abstract @NonNull String getBaseUrl();
 
     protected <T> T createService(Class<T> cls) {
         return retrofit.create(cls);

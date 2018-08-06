@@ -5,8 +5,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Button;
 
+import com.cetcme.m.net.RequestHelper;
 import com.qmuiteam.qmui.widget.QMUITopBar;
 import com.youth.banner.Banner;
 
@@ -17,6 +19,7 @@ import java.util.Map;
 
 import cc.momyles.tomorrow.R;
 import cc.momyles.tomorrow.loader.ImgLoader;
+import cc.momyles.tomorrow.net.NetHelper;
 import cc.momyles.tomorrow.ui.base.BaseActivity;
 import cc.momyles.tomorrow.ui.record.RecordActivity;
 
@@ -63,6 +66,20 @@ public class MainActivity extends BaseActivity {
         Map<String, String> param = new HashMap<>();
         param.put("userName", "sbaz");
         param.put("password", "123456");
+
+        new RequestHelper(this).doRequest(
+                NetHelper.instance().service().baidu()
+                , new RequestHelper.OnRequestListener<String>() {
+                    @Override
+                    public void success(String s) {
+                        Log.e("TAG", s);
+                    }
+
+                    @Override
+                    public void failure(Throwable throwable) {
+
+                    }
+                });
     }
 
     @Override

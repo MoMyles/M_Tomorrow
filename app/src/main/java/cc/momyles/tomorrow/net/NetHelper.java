@@ -6,8 +6,6 @@ import okhttp3.OkHttpClient;
 
 public class NetHelper extends MNetHelperAbstract {
 
-    private static NetHelper instance;
-
     public static NetHelper instance() {
         return NetHelperHolder.instance;
     }
@@ -19,7 +17,7 @@ public class NetHelper extends MNetHelperAbstract {
 
     @Override
     protected String getBaseUrl() {
-        return "";
+        return "API地址";
     }
 
     public ApiService service() {

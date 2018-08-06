@@ -1,5 +1,9 @@
 package cc.momyles.tomorrow.net;
 
-public interface ApiService {
+import io.reactivex.Observable;
+import retrofit2.http.GET;
 
+public interface ApiService {
+    @GET("/")
+    Observable<String> baidu();
 }
